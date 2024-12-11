@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+    <title>Video en página</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        button {
+            flex: 1 1 auto;
+            padding: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            background: #0073e6;
+            color: #fff;
+            border-radius: 5px;
+            text-align: center;
+        }
+        button:hover {
+            background: #005bb5;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            /* Mantener relación de aspecto 16:9 */
+            padding-top: 56.25%; 
+            overflow: hidden;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0; 
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            p, button {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Reproducción de Videos</h1>
+    <p>Selecciona un video para cargarlo y reproducirlo.</p>
+
+    <div class="buttons-container">
+        <button id="load-video1">Cargar Video 1</button>
+        <button id="load-video2">Cargar Video 2</button>
+    </div>
+
+    <div class="video-container" id="video-container"></div>
+
+    <script>
+        document.getElementById('load-video1').addEventListener('click', function() {
+            var container = document.getElementById('video-container');
+            container.innerHTML = '<iframe src="http://dvr02.dashcam.pe/808gps/open/player/video.html?lang=en&devIdno=99903&jsession=22f6566da182453989817be2c4da21fb&channel=1&chns=1,1,2" allow="autoplay; fullscreen" allowfullscreen></iframe>';
+        });
+
+        document.getElementById('load-video2').addEventListener('click', function() {
+            var container = document.getElementById('video-container');
+            container.innerHTML = '<iframe src="http://dvr02.dashcam.pe/808gps/open/player/video.html?lang=en&devIdno=99903&jsession=22f6566da182453989817be2c4da21fb&channel=1&chns=0,1,2" allow="autoplay; fullscreen" allowfullscreen></iframe>';
+        });
+    </script>
+</body>
+</html>
